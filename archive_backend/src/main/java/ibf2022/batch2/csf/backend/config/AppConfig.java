@@ -36,5 +36,6 @@ public class AppConfig {
             .withCredentials(new AWSStaticCredentialsProvider(cred))
             .build();
    }
+
 }
 
