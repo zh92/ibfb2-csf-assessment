@@ -1,1 +1,17 @@
-<p>display works!</p>
+<table *ngIf="fileDetails">
+    <tr>
+        <td>{{fileDetails.title}}</td>
+    </tr>
+    <tr>
+        <td>by {{fileDetails.name}} on {{fileDetails.date}}</td>
+    </tr>
+    <tr>
+       <td>{{fileDetails.comments}}</td> 
+    </tr>
+    <tr>
+        <img src="{{fileDetails.urls}}" size="30">
+    </tr>
+    <tr>
+        <button type="button" [routerLink]="['/upload']">Back</button>
+    </tr>
+</table>

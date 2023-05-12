@@ -11,6 +11,7 @@ import { FileUploadService } from '../services/file-upload.service';
 export class UploadComponent implements OnInit {
 
   form!: FormGroup
+  result!: string
 
   constructor(private fb: FormBuilder, private router: Router,
     private uploadSvc: FileUploadService) {}
@@ -21,14 +22,15 @@ export class UploadComponent implements OnInit {
 
   upload(){
     const formVal = this.form.value;
-    this.uploadSvc.upload(formVal)
+    const result = this.uploadSvc.upload(formVal);
+    this.router.navigate(['/bundle/:bundleId', result])
   }
 
   private createForm(): FormGroup{
     return this.fb.group({
       name: this.fb.control<string>('', [Validators.required]),
       title: this.fb.control<string>('', [Validators.required]),
-      comments: this.fb.control<string>('', [Validators.required]),
+      comments: this.fb.control<string>(''),
       archive: this.fb.control<string>('', [Validators.required])
     })
   }
